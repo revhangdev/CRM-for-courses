@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Редагування даних про групи</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="back-btn">
+        <a href="{{ url_for('AdminTeachers') }}">Назад</a>
+    </div>
+    <div id="logout">
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <h2>Інформація про групу</h2>
+
+    <div id="group-info">
+        <p><b>Назва:</b> {{ group_info[0][5] }}</p>
+        <p><b>Мова:</b> {{ group_info[0][1] }}</p>
+        <p><b>Час:</b> {{ group_info[0][2] }}</p>
+        <p><b>День:</b> {{ group_info[0][7] }}</p>
+        <p><b>Кількість студентів:</b> {{ group_info[0][3] }}</p>
+        <p><b>Викладач:</b> {{ list_with_teacher[0][1] }}</p>
+        <p><b>Студенти:</b> {{ students_names }}</p>
+    </div>
+
+    <div id="edit-info">
+        <h3>Редагування інформації</h3>
+        <form method="POST">
+            <label>Мова(обрати зі списку):</label>
+            <select name="group">
+             <option value="Python">Python</option>
+             <option value="C#">C#</option>
+             <option value="C++">C++</option>
+             <option value="JS">JS</option>
+           </select>
+             <label for="classTime">Введіть час занняття(у форматі 10.00-11.30):</label>
+             <input type="text" id="classTime" name="classTime" placeholder="Час" required>
+             <label for="classDay">Введіть дні заняття(через кому без проблів або один день):</label>
+             <input type="text" id="classDay" name="classDay" placeholder="День" required>
+             <label>Введіть кільікість студентів у групі:</label>
+             <input type="text" id="NumStudents" name="NumStudents" placeholder="Кількість студентів" required>
+             <label>Оберіть викладача зі списку:</label>
+             <select name="Teacher">
+                 {% for item in list_with_teacher %}
+                     <option value= {{ item[0] }} >{{ item[1] }}</option>
+                 {% endfor %}
+             </select>
+             <label for="groupName">Введіть назву групи:</label>
+             <input type="text" id="groupName" name="groupName" placeholder="Назва групи" required>
+             <div id = "surname-container">
+                 <label for="studentNames">Введіть прізвища студентів(або none), </label>
+                 <label for="studentNames"> якщо студент не зараєстрований, зараеєструйте за посиланням:</label>
+                 <a href="{{ url_for('AdminAddStudent') }}">(список студентів)</a>
+             </div>
+             <input type="text" id="studentNames" name="studentNames" placeholder="ПІБ студентів" required>
+             <button type="submit" value="new_inf" id="new_inf" class="btn">Зберегти зміни</button>
+         </form>
+    </div>
+</div>
+
+</body>
+</html>

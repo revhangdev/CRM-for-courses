@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Додавання викладачів викладачів</title>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="../static/images/logo.png" alt="Логотип">
+        </div>
+        <div id="back-btn">
+            <a href="{{ url_for('AdminTeachers') }}">Назад</a>
+        </div>
+        <div id="logout">
+            <span><a href="{{ url_for('index') }}">Вихід</a></span>
+        </div>
+    </header>
+    <div id="add-info">
+        <h3>Реєстрація викладача</h3>
+        <form method="POST">
+           <label for="login">Логін:</label>
+            <input type="login" id="login" name="login" placeholder="ПІБ" required>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" placeholder="Пароль" required>
+            <label>Викладач/Адміністратор:</label>
+            <select name="status">
+                <option value="True">Адміністратор</option>
+                <option value="False">Викладач</option>
+              </select>
+            <button type="submit" value="new_inf" id="new_inf" class="btn">Зареєструвати</button>
+        </form>
+    </div>
+</body>
+</html>

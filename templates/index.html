@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="../static/script/index.js"></script>
+    <title>Вхід</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+</header>
+
+<div id="login-container">
+    <div class="frame">
+        <h2>Вхід</h2>
+        <input type="radio" id="adminRadio" name="userType" class="radio-input" value="adminLogin">
+        <label for="adminRadio" class="radio-label">Адміністратор</label>
+
+        <input type="radio" id="teacherRadio" name="userType" class="radio-input" value="teacherLogin">
+        <label for="teacherRadio" class="radio-label">Викладач</label>
+
+        <div id="adminContent" class="content">
+            <p>Вхід для адміністратора</p>
+            <form method="POST" onsubmit="submitForm('adminLogin')">
+                <label for="adminLogin">Логін:</label>
+                <input type="text" id="adminLogin" name="adminLogin" placeholder="Логін" required>
+                <br>
+                <label for="adminPassword">Пароль:</label>
+                <input type="password" id="adminPassword" name="adminPassword" placeholder="Пароль" autocomplete="on" required>
+                <br>
+                <button type="submit" class="btn">Увійти</button>
+                <input type="hidden" name="userType" value="adminLogin">
+            </form>
+        </div>
+
+        <div id="teacherContent" class="content">
+            <p>Вхід для викладча</p>
+            <form method="POST" onsubmit="submitForm('teacherLogin')">
+                <label for="teacherLogin">Логін:</label>
+                <input type="text" id="teacherLogin" name="teacherLogin" placeholder="Логін" required>
+                <br>
+                <label for="teacherPassword">Пароль:</label>
+                <input type="password" id="teacherPassword" name="teacherPassword" placeholder="Пароль" autocomplete="on" required>
+                <br>
+                <button type="submit" class="btn">Увійти</button>
+                <input type="hidden" name="userType" value="teacherLogin">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

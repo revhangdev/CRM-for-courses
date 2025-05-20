@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Відвідуваність груп</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="back-btn">
+        <a href="{{ url_for('admin') }}">Назад</a>
+    </div>
+    <div id="logout">
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <h2>Пропуски без назначеної дати відпрацювання</h2>
+    <ul id="teachers-list">
+        {% if absentees_with_out_date == "Відсутня актуальна інформація" %}
+            <p><b>Відсутня актуальна інформація</b></p>
+        {% endif %}
+
+        {% if absentees_with_out_date != "Відсутня актуальна інформація" %}
+            {% for student in absentees_with_out_date %}
+                <li>
+                    <form method="POST" action="{{ url_for('AddAbsentDate', absent_id=student[0]) }}">
+                        <p><b>ПІБ: </b> {{ student[2] }}</p>
+                        <p><b>Назва групи: </b> {{ student[1] }}</p>
+                        <p><b>Дата пропуску: </b> {{ student[3] }}</p>
+                        <label for="NewDate">Дата відпрацювання:</label>
+                        <input type="text" id="NewDate" name="NewDate" placeholder="Дата відпрацювання" required>
+                        <button type="submit">Зберегти зміни</button>
+                    </form>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+<div id="content-container-abs">
+    <h2>Пропуски з назначеною датою відпрацювання</h2>
+    <ul id="teachers-list-abs">
+        {% if absentees_with_date == "Відсутня актуальна інформація" %}
+            <p><b>Відсутня актуальна інформація</b></p>
+        {% endif %}
+
+        {% if absentees_with_date != "Відсутня актуальна інформація" %}
+            {% for student in absentees_with_date %}
+                <li>
+                    <p><b>ПІБ: </b> {{ student[2] }}</p>
+                    <p><b>Назва групи: </b> {{ student[1] }}</p>
+                    <p><b>Дата пропуску: </b> {{ student[3] }}</p>
+                    <p><b>Дата відпрацювання: </b> {{ student[4] }}</p>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

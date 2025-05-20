@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Групи</title>
+</head>
+<body>
+
+    <header>
+        <div id="logo">
+            <img src="../static/images/logo.png" alt="Логотип">
+        </div>
+        <div id="logout">
+            <span><a href="{{ url_for('index') }}">Вихід</a></span>
+        </div>
+        <div id="back-btn">
+            <a href="{{ url_for('admin') }}">Назад</a>
+        </div>
+         <div id="header-buttons">
+            <span><a href="{{ url_for('AdminAddGroup') }}">Додати групу</a></span>
+         </div>
+    </header>
+    
+    <div id="content-container">
+        <h2>Список груп</h2>
+
+    
+        <div class="language-group">
+            <h3>Python</h3>
+            <ul>
+              {% for item in all_groups %}
+                {% if item[1] == 'Python' %}
+                <li>
+                    <div class="group-container">
+                        <div class="group-info">
+                            <p><b>Група: </b> {{ item[5] }} <b>Кількість студентів:</b> {{ item[3] }} <b>День: </b> {{ item[7] }} <b>Час: </b> {{ item[2] }}</p>
+                        </div>
+                        <div class="group-actions">
+                            <span><a href="{{ url_for('AdminEditGroup', group_id=item[0]) }}">Редагувати</a></span>
+                            <span><a href="{{ url_for('deleteGroup', group_id=item[0]) }}">Видалити</a></span>
+                        </div>
+                    </div>
+                    
+                </li>
+                 {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="language-group">
+             <h3>C#</h3>
+            <ul>
+              {% for item in all_groups %}
+                {% if item[1] == 'C#' %}
+                <li>
+                    <div class="group-container">
+                        <div class="group-info">
+                            <p><b>Група: </b> {{ item[5] }} <b>Кількість студентів:</b> {{ item[3] }} <b>День: </b> {{ item[7] }} <b>Час: </b> {{ item[2] }}</p>
+                        </div>
+                        <div class="group-actions">
+                            <span><a href="{{ url_for('AdminEditGroup', group_id=item[0]) }}">Редагувати</a></span>
+                            <span><a href="{{ url_for('deleteGroup', group_id=item[0]) }}">Видалити</a></span>
+                        </div>
+                    </div>
+                    
+                </li>
+                 {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="language-group">
+            <h3>C++</h3>
+                    <ul>
+              {% for item in all_groups %}
+                {% if item[1] == 'C++' %}
+                <li>
+                    <div class="group-container">
+                        <div class="group-info">
+                            <p><b>Група: </b> {{ item[5] }} <b>Кількість студентів:</b> {{ item[3] }} <b>День: </b> {{ item[7] }} <b>Час: </b> {{ item[2] }}</p>
+                        </div>
+                        <div class="group-actions">
+                            <span><a href="{{ url_for('AdminEditGroup', group_id=item[0]) }}">Редагувати</a></span>
+                            <span><a href="{{ url_for('deleteGroup', group_id=item[0]) }}">Видалити</a></span>
+                        </div>
+                    </div>
+                    
+                </li>
+                 {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="language-group">
+            <h3>JS</h3>
+                     <ul>
+              {% for item in all_groups %}
+                {% if item[1] == 'JS' %}
+                <li>
+                    <div class="group-container">
+                        <div class="group-info">
+                            <p><b>Група: </b> {{ item[5] }} <b>Кількість студентів:</b> {{ item[3] }} <b>День: </b> {{ item[7] }} <b>Час: </b> {{ item[2] }}</p>
+                        </div>
+                        <div class="group-actions">
+                            <span><a href="{{ url_for('AdminEditGroup', group_id=item[0]) }}">Редагувати</a></span>
+                            <span><a href="{{ url_for('deleteGroup', group_id=item[0]) }}">Видалити</a></span>
+                        </div>
+                    </div>
+                    
+                </li>
+                 {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="language-group">
+            <h3>Java</h3>
+                      <ul>
+              {% for item in all_groups %}
+                {% if item[1] == 'Java' %}
+                <li>
+                    <div class="group-container">
+                        <div class="group-info">
+                            <p><b>Група: </b> {{ item[5] }} <b>Кількість студентів:</b> {{ item[3] }} <b>День: </b> {{ item[7] }} <b>Час: </b> {{ item[2] }}</p>
+                        </div>
+                        <div class="group-actions">
+                            <span><a href="{{ url_for('AdminEditGroup', group_id=item[0]) }}">Редагувати</a></span>
+                            <span><a href="{{ url_for('deleteGroup', group_id=item[0]) }}">Видалити</a></span>
+                        </div>
+                    </div>
+                    
+                </li>
+                 {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js" defer></script>
+    
+    </body>

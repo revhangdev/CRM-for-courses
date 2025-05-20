@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Розклад</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="buttons">
+        <span><a href="{{ url_for('TeacherVisits') }}">Відвідуваність</a></span>
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <h2>Групи</h2>
+    <table class="schedule">
+        <tr>
+            <th>GroupID</th>
+            <th>Мова</th>
+            <th>Час занять</th>
+            <th>Кількість студентів</th>
+            <th>Назва групи</th>
+            <th>Дні тижня</th>
+        </tr>
+        {% for group in all_groups %}
+        <tr>
+            <td>{{ group[0] }}</td>
+            <td>{{ group[1] }}</td>
+            <td>{{ group[2] }}</td>
+            <td>{{ group[3] }}</td>
+            <td>{{ group[5] }}</td>
+            <td>{{ group[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

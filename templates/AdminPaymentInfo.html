@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Оплата занять</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="back-btn">
+        <a href="{{ url_for('admin') }}">Назад</a>
+    </div>
+    <div id="logout">
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <div id="edit-info">
+        <h3>Додавання даних про оплату</h3>
+        <form method="POST">
+           <label for="PayId">Номер платежу:</label>
+            <input type="text" id="PayId" name="PayId" placeholder="Номер платежу" required>
+            <label for="GroupName">Назва групи:</label>
+            <input type="text" id="GroupName" name="GroupName" placeholder="Назва групи" required>
+            <label for="PIB">ПІБ студента:</label>
+            <input type="text" id="PIB" name="PIB" placeholder="ПІБ" required>
+            <label for="Sum">Сума:</label>
+            <input type="text" id="Sum" name="Sum" placeholder="Сума" required>
+            <label for="Date">Дата оплати:</label>
+            <input type="text" id="Date" name="Date" placeholder="Дата оплати" required>
+            <button type="submit" value="new_inf" id="new_inf" class="btn">Підтвердити</button>
+        </form>
+    </div>
+    <h2>Відомості про оплату</h2>
+    {% for payment in allPay %}
+        <div class="payment-info">
+            <h3>Студент: {{ payment[2] }}</h3>
+            <p>Група: {{ payment[1] }}</p>
+            <p>Дата оплати: {{ payment[3] }}</p>
+            <p>Загальна сума: ${{ payment[4] }}</p>
+        </div>
+    {% endfor %}
+
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

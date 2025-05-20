@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Список викладачів</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="logout">
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+    <div id="back-btn">
+        <a href="{{ url_for('admin') }}">Назад</a>
+    </div>
+    <div id="header-buttons">
+        <span><a href="{{ url_for('AdminAddTeacher') }}">Додати викладача</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <h2>Список викладачів</h2>
+
+    <ul id="teachers-list">
+        {% for row in rows %}
+        <li>
+            <p><b>Ім'я: </b> {{ row[0] }}</p>
+            <span><a href="{{ url_for('AdminEditTeacher', teacher_name=row[0]) }}">Редагувати</a></span>
+            <span><a href="{{ url_for('deleteTeacher', teacher_name=row[0]) }}">Видалити</a></span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script src="../static/script/index.js" defer></script>
+
+</body>
+</html>

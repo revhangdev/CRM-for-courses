@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Додавання студента</title>
+</head>
+<body>
+
+    <header>
+        <div id="logo">
+            <img src="../static/images/logo.png" alt="Логотип">
+        </div>
+        <div id="back-btn">
+            <a href="{{ url_for('admin') }}">Назад</a>
+        </div>
+        <div id="logout">
+            <span><a href="{{ url_for('index') }}">Вихід</a></span>
+        </div>
+    </header>
+    
+    <div id="content-container">
+        <h3>Реєстрація студента</h3>
+        <form method="POST">
+            <label for="studentName">Введіть ПІБ студента:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="ПІБ" required>
+            <label for="studentPhone">Введіть номер телефону батьків студента:</label>
+            <input type="text" id="studentPhone" name="studentPhone" placeholder="Номер телефону" required>
+            <button type="submit" value="new_inf" id="new_inf" class="btn">Зареєструвати</button>
+        </form>
+    </div>
+    <ul>
+             <div>Список студентів</div>
+             {% for item in all_students %}
+    <div class="student-container">
+        <div class="student-info">
+            <p><b>Ім'я: </b> {{ item[1] }}: <b>Телефон:</b> {{ item[2] }} <b>Групи</b> {{ item[3] }}</p>
+        </div>
+        <div class="student-actions">
+            <span><a href="{{ url_for('AdminEditStudent', student_id=item[0]) }}">Редагувати</a></span>
+            <span><a href="{{ url_for('deleteStudent', student_id=item[0]) }}">Видалити</a></span>
+        </div>
+    </div>
+{% endfor %}
+
+            </ul>
+    
+    <script src="script.js" defer></script>
+    
+    </body>

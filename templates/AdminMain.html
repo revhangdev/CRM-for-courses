@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Адмін-панель</title>
+</head>
+<body>
+
+<header>
+    <div id="logo">
+        <img src="../static/images/logo.png" alt="Логотип">
+    </div>
+    <div id="logout">
+        <span><a href="{{ url_for('index') }}">Вихід</a></span>
+    </div>
+</header>
+
+<div id="content-container">
+    <div class="frame">
+        <h2>Головне меню</h2>
+        <span><a href="{{ url_for('AdminTeachers') }}">Викладачі</a></span>
+        <span><a href="{{ url_for('AdminVisits') }}">Відомості</a></span>
+        <span><a href="{{ url_for('AdminAddStudent') }}">Студенти</a></span>
+        <span><a href="{{ url_for('PaymentInfo') }}">Відомості про оплату занять</a></span>
+        <span><a href="{{ url_for('AdminGroup') }}">Групи</a></span>
+    </div>
+</div>
+
+</body>
+</html>
